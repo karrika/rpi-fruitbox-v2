@@ -12,11 +12,11 @@ void SpectrumAnalyserDisplayClass::init
   if (band.size() == 0) // no bands defined, so make them all active...
   {
     band_gain_t b {};
-    for (uint32_t i = 0; i < spectrum_analyser_bands; ++i)
-    {
-      b.num = i;
-      band.push_back(b);
-    }
+    //for (uint32_t i = 0; i < spectrum_analyser_bands; ++i)
+    //{
+    //  b.num = i;
+    //  band.push_back(b);
+    //}
   }
 
   // scale individual bands gains relative to size of bitmap, averaging constant, etc...
@@ -70,17 +70,20 @@ bool SpectrumAnalyserDisplayClass::update
 
     if (channel == spectrum_analyser_channel_e::Left)
     {
-      val = static_cast<uint32_t>(spectrum_analyser_band[0][b.num] * b.gain);
+      //val = static_cast<uint32_t>(spectrum_analyser_band[0][b.num] * b.gain);
+      val = 0;
       // cout << "left gain " << b.gain << " " << spectrum_analyser_band[0][b.num] << " " << val << endl;
     }
     else if (channel == spectrum_analyser_channel_e::Right)
     {
-      val = static_cast<uint32_t>(spectrum_analyser_band[1][b.num] * b.gain);
+      //val = static_cast<uint32_t>(spectrum_analyser_band[1][b.num] * b.gain);
+      val = 0;
       // cout << "right gain " << b.gain << " " << spectrum_analyser_band[1][b.num] << " " << val << endl;
     }
     else // Both
     {
-      val = static_cast<uint32_t>((spectrum_analyser_band[0][b.num] + spectrum_analyser_band[1][b.num]) * b.gain) / 2;
+      //val = static_cast<uint32_t>((spectrum_analyser_band[0][b.num] + spectrum_analyser_band[1][b.num]) * b.gain) / 2;
+      val = 0;
       // cout << "both gain " << b.gain << " " << spectrum_analyser_band[0][b.num] << " " << spectrum_analyser_band[1][b.num] << " " << val << endl;
     }
 

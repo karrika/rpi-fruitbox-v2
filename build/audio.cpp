@@ -23,8 +23,10 @@ ALLEGRO_AUDIO_STREAM *AudioClass::mp3_stream {};
 atomic<int32_t>AudioClass::GetCURLDataThread_status_event {};
 mutex AudioClass::icy_buffer_mtx {};
 
+#ifdef _RPI
 extern "C" void clear_equalizer(void); // src/libmpg123/equalizer.c
 extern "C" void init_equalizer(void); // src/libmpg123/equalizer.c
+#endif
 
 struct ioh { int fd; };
 
@@ -465,7 +467,9 @@ void AudioClass::PlaySongThread(void)
         }
 
         song_play_state = song_play_state_e::unloading;
+#ifdef _RPI
         clear_equalizer(); // clear out spectrum analyser pipeline...
+#endif
 
         // update number of songs played status (and total length)
         ++num_songs_played;
@@ -969,7 +973,9 @@ void AudioClass::Run(void)
       mpg123_eq(mp3, MPG123_LEFT,  i, 1.0);
       mpg123_eq(mp3, MPG123_RIGHT, i, 1.0);
     }
+#ifdef _RPI
     init_equalizer(); // initialise the log gain lut
+#endif
   }
 
   // al_set_mixer_gain(al_get_default_mixer(), 1.0);

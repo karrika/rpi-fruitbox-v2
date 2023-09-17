@@ -93,7 +93,7 @@ const array<dynamic_parameter_t, 12> DynamicParameter {
         dynamic_t *v { static_cast<dynamic_t *>(var) };
         // double gain { static_cast<double>(v->max - v->min) / spectrum_analyser_max_av_len};
         double gain { static_cast<double>(v->max - v->min)};
-        v->val = v->min + static_cast<uint32_t>((spectrum_analyser_band[0][v->mode_param] + spectrum_analyser_band[1][v->mode_param]) * gain) / 2;
+        //v->val = v->min + static_cast<uint32_t>((spectrum_analyser_band[0][v->mode_param] + spectrum_analyser_band[1][v->mode_param]) * gain) / 2;
       }
     },
     
@@ -102,7 +102,7 @@ const array<dynamic_parameter_t, 12> DynamicParameter {
         dynamic_t *v { static_cast<dynamic_t *>(var) };
         // double gain { static_cast<double>(v->max - v->min) / spectrum_analyser_max_av_len};
         double gain { static_cast<double>(v->max - v->min) };
-        v->val = v->min + static_cast<uint32_t>(spectrum_analyser_band[0][v->mode_param] * gain);
+        //v->val = v->min + static_cast<uint32_t>(spectrum_analyser_band[0][v->mode_param] * gain);
       }
     },
     
@@ -111,7 +111,7 @@ const array<dynamic_parameter_t, 12> DynamicParameter {
         dynamic_t *v { static_cast<dynamic_t *>(var) };
         // double gain { static_cast<double>(v->max - v->min) / spectrum_analyser_max_av_len};
         double gain { static_cast<double>(v->max - v->min) };
-        v->val = v->min + static_cast<uint32_t>(spectrum_analyser_band[1][v->mode_param] * gain);
+        //v->val = v->min + static_cast<uint32_t>(spectrum_analyser_band[1][v->mode_param] * gain);
       }
     }
   }
