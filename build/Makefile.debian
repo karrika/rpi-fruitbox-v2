@@ -14,12 +14,12 @@ ALLEGRO_LIBS = -lallegro -lallegro_memfile -lallegro_font -lallegro_ttf -lallegr
 %.o: %.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS) $(INC)
 
-../rpi/fruitbox: $(OBJ)
+../debian/fruitbox: $(OBJ)
 	$(CXX) -Wall -o $@ $^ $(CXXFLAGS) $(LIBS) $(ALLEGRO_LIBS)
 
 .PHONY: clean
 clean:
 	rm -f *.o
-	rm -f ../rpi/fruitbox
+	rm -f ../debian/fruitbox
 	touch Makefile
 	touch *.?pp
